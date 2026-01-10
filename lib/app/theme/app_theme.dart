@@ -6,36 +6,36 @@ class AppColors {
   static const Color primaryBackground = Color(0xFF1A1A1A);
   static const Color secondaryBackground = Color(0xFF2A2A2A);
   static const Color accentLime = Color(0xFFD4F752);
-  
+
   // Text Colors
   static const Color textPrimary = Color(0xFFFFFFFF);
   static const Color textSecondary = Color(0xFFB0B0B0);
-  
+
   // Status Colors
   static const Color success = Color(0xFF4CAF50);
   static const Color error = Color(0xFFF44336);
   static const Color warning = Color(0xFFFFC107);
   static const Color info = Color(0xFF2196F3);
-  
+
   // Transaction Colors
   static const Color positive = Color(0xFF4CAF50);
   static const Color negative = Color(0xFFFF5252);
-  
+
   // Card Colors
   static const Color cardBackground = Color(0xFF2A2A2A);
   static const Color cardBorder = Color(0xFF3A3A3A);
-  
+
   // Gradient Colors
   static const List<Color> visaGradient = [
     Color(0xFF1A1F71),
     Color(0xFF2D3A8C),
   ];
-  
+
   static const List<Color> mastercardGradient = [
     Color(0xFFEB001B),
     Color(0xFFF79E1B),
   ];
-  
+
   static const List<Color> accountGradient = [
     Color(0xFF2A2A2A),
     Color(0xFF3A3A3A),
@@ -58,7 +58,7 @@ class AppTheme {
         onSurface: AppColors.textPrimary,
         onError: AppColors.textPrimary,
       ),
-      
+
       // Text Theme
       textTheme: TextTheme(
         // Headers
@@ -77,7 +77,7 @@ class AppTheme {
           fontWeight: FontWeight.bold,
           color: AppColors.textPrimary,
         ),
-        
+
         // Titles
         headlineLarge: GoogleFonts.inter(
           fontSize: 22,
@@ -94,7 +94,7 @@ class AppTheme {
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        
+
         // Body
         bodyLarge: GoogleFonts.inter(
           fontSize: 16,
@@ -111,7 +111,7 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           color: AppColors.textSecondary,
         ),
-        
+
         // Labels
         labelLarge: GoogleFonts.inter(
           fontSize: 14,
@@ -129,7 +129,7 @@ class AppTheme {
           color: AppColors.textSecondary,
         ),
       ),
-      
+
       // AppBar Theme
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.primaryBackground,
@@ -140,11 +140,9 @@ class AppTheme {
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        iconTheme: const IconThemeData(
-          color: AppColors.textPrimary,
-        ),
+        iconTheme: const IconThemeData(color: AppColors.textPrimary),
       ),
-      
+
       // Card Theme
       cardTheme: const CardThemeData(
         color: AppColors.cardBackground,
@@ -153,7 +151,7 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
       ),
-      
+
       // Button Themes
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -170,7 +168,7 @@ class AppTheme {
           ),
         ),
       ),
-      
+
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.accentLime,
@@ -185,7 +183,7 @@ class AppTheme {
           ),
         ),
       ),
-      
+
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppColors.accentLime,
@@ -196,7 +194,7 @@ class AppTheme {
           ),
         ),
       ),
-      
+
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -229,9 +227,12 @@ class AppTheme {
           fontSize: 14,
           color: AppColors.textSecondary,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
       ),
-      
+
       // Bottom Navigation Bar Theme
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.secondaryBackground,
@@ -239,16 +240,19 @@ class AppTheme {
         unselectedItemColor: AppColors.textSecondary,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
-        selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-        unselectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+        selectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
+        ),
       ),
-      
+
       // Icon Theme
-      iconTheme: const IconThemeData(
-        color: AppColors.textPrimary,
-        size: 24,
-      ),
-      
+      iconTheme: const IconThemeData(color: AppColors.textPrimary, size: 24),
+
       // Divider Theme
       dividerTheme: const DividerThemeData(
         color: AppColors.cardBorder,

@@ -50,16 +50,19 @@ class StorageService {
   Future<void> setUserId(String value) => write(keyUserId, value);
 
   Map<String, dynamic>? get userData => read<Map<String, dynamic>>(keyUserData);
-  Future<void> setUserData(Map<String, dynamic> value) => write(keyUserData, value);
+  Future<void> setUserData(Map<String, dynamic> value) =>
+      write(keyUserData, value);
 
   bool get biometricEnabled => read<bool>(keyBiometricEnabled) ?? false;
-  Future<void> setBiometricEnabled(bool value) => write(keyBiometricEnabled, value);
+  Future<void> setBiometricEnabled(bool value) =>
+      write(keyBiometricEnabled, value);
 
   String? get passcode => read<String>(keyPasscode);
   Future<void> setPasscode(String value) => write(keyPasscode, value);
 
   String? get selectedAccountId => read<String>(keySelectedAccountId);
-  Future<void> setSelectedAccountId(String value) => write(keySelectedAccountId, value);
+  Future<void> setSelectedAccountId(String value) =>
+      write(keySelectedAccountId, value);
 
   String get themeMode => read<String>(keyThemeMode) ?? 'dark';
   Future<void> setThemeMode(String value) => write(keyThemeMode, value);

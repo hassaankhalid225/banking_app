@@ -19,10 +19,10 @@ class SplashController extends GetxController {
 
       // Check if user is logged in
       if (_storageService.isLoggedIn) {
-        // Navigate to passcode screen
-        Get.offAllNamed(AppRoutes.passcode);
+        // Navigate to home screen
+        Get.offAllNamed(AppRoutes.home);
       } else {
-        // Navigate to passcode screen (for now, always go to passcode)
+        // Navigate to passcode screen
         Get.offAllNamed(AppRoutes.passcode);
       }
     } catch (e) {

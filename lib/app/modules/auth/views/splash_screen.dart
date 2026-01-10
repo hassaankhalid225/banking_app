@@ -10,7 +10,7 @@ class SplashScreen extends GetView<SplashController> {
   Widget build(BuildContext context) {
     // Ensure controller is initialized
     Get.find<SplashController>();
-    
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: Center(
@@ -24,18 +24,18 @@ class SplashScreen extends GetView<SplashController> {
                   TextSpan(
                     text: 'Lou',
                     style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
                   ),
                   TextSpan(
                     text: 'Bank',
                     style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.accentLime,
-                        ),
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.accentLime,
+                    ),
                   ),
                 ],
               ),
@@ -43,15 +43,13 @@ class SplashScreen extends GetView<SplashController> {
             const SizedBox(height: 16),
             Text(
               'Become a Lover of the bank',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
             ),
             const SizedBox(height: 24),
             // Loading indicator
-            const CircularProgressIndicator(
-              color: AppColors.accentLime,
-            ),
+            const CircularProgressIndicator(color: AppColors.accentLime),
           ],
         ),
       ),

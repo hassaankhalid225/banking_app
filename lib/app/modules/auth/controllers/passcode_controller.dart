@@ -23,9 +23,12 @@ class PasscodeController extends GetxController {
 
   Future<void> _checkBiometricAvailability() async {
     try {
-      final bool canAuthenticateWithBiometrics = await _localAuth.canCheckBiometrics;
-      final bool canAuthenticate = canAuthenticateWithBiometrics || await _localAuth.isDeviceSupported();
-      canUseBiometric.value = canAuthenticate && _storageService.biometricEnabled;
+      final bool canAuthenticateWithBiometrics =
+          await _localAuth.canCheckBiometrics;
+      final bool canAuthenticate =
+          canAuthenticateWithBiometrics || await _localAuth.isDeviceSupported();
+      canUseBiometric.value =
+          canAuthenticate && _storageService.biometricEnabled;
     } catch (e) {
       canUseBiometric.value = false;
     }

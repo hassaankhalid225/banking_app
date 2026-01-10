@@ -50,10 +50,10 @@ class NumericKeypad extends StatelessWidget {
           _buildIconKey(Icons.fingerprint, onBiometricPressed!)
         else
           const SizedBox(width: 80, height: 80),
-        
+
         // Zero
         _buildKey('0'),
-        
+
         // Delete button
         _buildIconKey(Icons.backspace_outlined, onDeletePressed),
       ],
@@ -97,11 +97,7 @@ class NumericKeypad extends StatelessWidget {
           color: AppColors.secondaryBackground,
         ),
         child: Center(
-          child: Icon(
-            icon,
-            size: 28,
-            color: AppColors.textPrimary,
-          ),
+          child: Icon(icon, size: 28, color: AppColors.textPrimary),
         ),
       ),
     );

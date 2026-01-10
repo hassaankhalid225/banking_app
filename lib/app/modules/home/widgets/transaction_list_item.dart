@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../data/models/transaction_model.dart';
 import '../../../theme/app_theme.dart';
 
@@ -13,85 +12,59 @@ class TransactionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppColors.secondaryBackground,
-        borderRadius: BorderRadius.circular(12),
-      ),
+    final isCredit = transaction.type == 'credit';
+    final iconColor = isCredit ? AppColors.accentLime : const Color(0xFF80DEEA);
+    final icon = isCredit ? Icons.arrow_downward : Icons.arrow_upward;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       child: Row(
         children: [
-          // Avatar
           Container(
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: AppColors.cardBackground,
+              color: iconColor,
               shape: BoxShape.circle,
             ),
-            child: Center(
-              child: Text(
-                transaction.recipientName.substring(0, 1).toUpperCase(),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.accentLime,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
+            child: Icon(
+              icon,
+              color: Colors.black87,
+              size: 20,
             ),
           ),
-          
-          const SizedBox(width: 12),
-          
-          // Transaction Details
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  transaction.recipientName,
+                  transaction.category,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  _formatDate(transaction.timestamp),
-                  style: Theme.of(context).textTheme.bodySmall,
+                  transaction.description,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ),
           ),
-          
-          // Amount
           Text(
-            transaction.formattedAmount,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: transaction.isCredit
-                      ? AppColors.positive
-                      : AppColors.negative,
-                  fontWeight: FontWeight.bold,
-                ),
+            '${isCredit ? '+' : '-'} \$${transaction.amount.toStringAsFixed(transaction.amount == transaction.amount.toInt() ? 0 : 2)}',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppColors.textPrimary,
+            ),
           ),
         ],
       ),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final yesterday = today.subtract(const Duration(days: 1));
-    final transactionDate = DateTime(date.year, date.month, date.day);
-
-    if (transactionDate == today) {
-      return 'Today, ${DateFormat('HH:mm').format(date)}';
-    } else if (transactionDate == yesterday) {
-      return 'Yesterday, ${DateFormat('HH:mm').format(date)}';
-    } else {
-      return DateFormat('MMM dd, HH:mm').format(date);
-    }
   }
 }

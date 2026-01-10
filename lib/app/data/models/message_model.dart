@@ -28,7 +28,9 @@ class MessageModel {
       senderId: json['senderId'] as String,
       receiverId: json['receiverId'] as String,
       message: json['message'] as String,
-      amount: json['amount'] != null ? (json['amount'] as num).toDouble() : null,
+      amount: json['amount'] != null
+          ? (json['amount'] as num).toDouble()
+          : null,
       timestamp: DateTime.parse(json['timestamp'] as String),
       isRead: json['isRead'] as bool,
       messageType: json['messageType'] as String,

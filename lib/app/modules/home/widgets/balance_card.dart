@@ -24,24 +24,24 @@ class BalanceCard extends StatelessWidget {
         children: [
           Text(
             'Total Balance',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 8),
           Text(
             balance,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 4),
           Text(
             'Become a Lover of the bank',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: AppColors.textSecondary),
           ),
           if (accountNumber.isNotEmpty) ...[
             const SizedBox(height: 16),

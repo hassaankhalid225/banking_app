@@ -45,13 +45,15 @@ class QuickAccessCard extends StatelessWidget {
               Text(
                 title,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withValues(alpha: 0.8),
-                      fontWeight: FontWeight.w600,
-                    ),
+                  color: Colors.white.withValues(alpha: 0.8),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               if (isCard)
                 Icon(
-                  title.contains('VISA') ? Icons.credit_card : Icons.credit_card,
+                  title.contains('VISA')
+                      ? Icons.credit_card
+                      : Icons.credit_card,
                   size: 20,
                   color: Colors.white.withValues(alpha: 0.8),
                 ),
@@ -63,16 +65,16 @@ class QuickAccessCard extends StatelessWidget {
               Text(
                 balance,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 4),
               Text(
                 isCard ? cardNumber : '****$cardNumber',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withValues(alpha: 0.7),
-                    ),
+                  color: Colors.white.withValues(alpha: 0.7),
+                ),
               ),
             ],
           ),

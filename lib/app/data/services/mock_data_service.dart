@@ -63,74 +63,62 @@ class MockDataService {
       CardModel(
         id: 'card_001',
         accountId: 'acc_001',
-        cardNumber: '4532123456784952',
-        cardType: 'VISA',
+        cardNumber: '4532123456786917',
+        cardType: 'Salary', // Design: Salary
         cardHolderName: 'JOHN DOE',
         expiryDate: '12/26',
         cvv: '123',
         isActive: true,
         isFrozen: false,
-        cardLimit: 10000.00,
+        cardLimit: 2230.00, // Design: $ 2,230
       ),
       CardModel(
         id: 'card_002',
         accountId: 'acc_001',
-        cardNumber: '5425233430109903',
-        cardType: 'Mastercard',
+        cardNumber: '5425233430104552',
+        cardType: 'Savings account', // Design: Savings account
         cardHolderName: 'JOHN DOE',
         expiryDate: '08/27',
         cvv: '456',
         isActive: true,
         isFrozen: false,
-        cardLimit: 15000.00,
+        cardLimit: 5566.00, // Design: $ 5,566
       ),
       CardModel(
         id: 'card_003',
         accountId: 'acc_002',
         cardNumber: '4916338506082832',
-        cardType: 'VISA',
+        cardType: 'Investment', // Design: Lilac card
         cardHolderName: 'JOHN DOE',
         expiryDate: '03/25',
         cvv: '789',
         isActive: true,
         isFrozen: false,
-        cardLimit: 5000.00,
+        cardLimit: 14500.00,
       ),
       CardModel(
         id: 'card_004',
         accountId: 'acc_002',
         cardNumber: '5425233430109911',
-        cardType: 'Mastercard',
+        cardType: 'Online Shopping',
         cardHolderName: 'JOHN DOE',
         expiryDate: '11/28',
         cvv: '321',
         isActive: true,
         isFrozen: true,
-        cardLimit: 8000.00,
+        cardLimit: 3450.00,
       ),
       CardModel(
         id: 'card_005',
         accountId: 'acc_003',
         cardNumber: '4532123456789876',
-        cardType: 'VISA',
+        cardType: 'Business',
         cardHolderName: 'JOHN DOE',
         expiryDate: '06/26',
         cvv: '654',
         isActive: true,
         isFrozen: false,
-        cardLimit: 20000.00,
-      ),
-      CardModel(
-        id: 'card_006',
-        accountId: 'acc_003',
-        cardNumber: '5425233430109922',
-        cardType: 'Mastercard',
-        cardHolderName: 'JOHN DOE',
-        expiryDate: '09/27',
-        cvv: '987',
-        isActive: true,
-        isFrozen: false,
-        cardLimit: 25000.00,
+        cardLimit: 8900.00,
       ),
     ];
   }
@@ -151,15 +139,42 @@ class MockDataService {
 
   static const Map<String, List<String>> _merchantsByCategory = {
     'Transfer': ['John Smith', 'Sarah Johnson', 'Mike Wilson', 'Emily Davis'],
-    'Health': ['City Hospital', 'HealthCare Plus', 'MediClinic', 'Pharmacy Express'],
+    'Health': [
+      'City Hospital',
+      'HealthCare Plus',
+      'MediClinic',
+      'Pharmacy Express',
+    ],
     'Shopping': ['Amazon', 'Target', 'Walmart', 'Best Buy', 'Apple Store'],
-    'Food & Dining': ['Starbucks', 'McDonald\'s', 'Pizza Hut', 'Subway', 'Chipotle'],
+    'Food & Dining': [
+      'Starbucks',
+      'McDonald\'s',
+      'Pizza Hut',
+      'Subway',
+      'Chipotle',
+    ],
     'Transportation': ['Uber', 'Lyft', 'Gas Station', 'Metro Card', 'Parking'],
-    'Entertainment': ['Netflix', 'Spotify', 'Cinema', 'Game Store', 'Concert Tickets'],
-    'Bills & Utilities': ['Electric Company', 'Water Bill', 'Internet Provider', 'Phone Bill'],
+    'Entertainment': [
+      'Netflix',
+      'Spotify',
+      'Cinema',
+      'Game Store',
+      'Concert Tickets',
+    ],
+    'Bills & Utilities': [
+      'Electric Company',
+      'Water Bill',
+      'Internet Provider',
+      'Phone Bill',
+    ],
     'Groceries': ['Whole Foods', 'Trader Joe\'s', 'Safeway', 'Costco'],
     'Travel': ['Airbnb', 'Booking.com', 'Delta Airlines', 'Hilton Hotel'],
-    'Education': ['University Tuition', 'Online Course', 'Book Store', 'Library Fee'],
+    'Education': [
+      'University Tuition',
+      'Online Course',
+      'Book Store',
+      'Library Fee',
+    ],
   };
 
   // Mock Transactions
@@ -172,29 +187,33 @@ class MockDataService {
       final category = _categories[_random.nextInt(_categories.length)];
       final merchants = _merchantsByCategory[category]!;
       final merchant = merchants[_random.nextInt(merchants.length)];
-      
+
       final daysAgo = _random.nextInt(180); // 6 months
-      final timestamp = now.subtract(Duration(
-        days: daysAgo,
-        hours: _random.nextInt(24),
-        minutes: _random.nextInt(60),
-      ));
+      final timestamp = now.subtract(
+        Duration(
+          days: daysAgo,
+          hours: _random.nextInt(24),
+          minutes: _random.nextInt(60),
+        ),
+      );
 
       final isCredit = _random.nextBool() && category != 'Transfer';
       final amount = _random.nextDouble() * 500 + 10; // $10 to $510
 
-      transactions.add(TransactionModel(
-        id: 'txn_${i.toString().padLeft(3, '0')}',
-        accountId: 'acc_001',
-        type: isCredit ? 'credit' : 'debit',
-        category: category,
-        amount: double.parse(amount.toStringAsFixed(2)),
-        description: merchant,
-        recipientName: merchant,
-        recipientAvatar: '',
-        timestamp: timestamp,
-        status: 'completed',
-      ));
+      transactions.add(
+        TransactionModel(
+          id: 'txn_${i.toString().padLeft(3, '0')}',
+          accountId: 'acc_001',
+          type: isCredit ? 'credit' : 'debit',
+          category: category,
+          amount: double.parse(amount.toStringAsFixed(2)),
+          description: merchant,
+          recipientName: merchant,
+          recipientAvatar: '',
+          timestamp: timestamp,
+          status: 'completed',
+        ),
+      );
     }
 
     // Sort by timestamp (most recent first)
@@ -223,14 +242,14 @@ class MockDataService {
     return contacts.asMap().entries.map((entry) {
       final index = entry.key;
       final name = entry.value;
-      
+
       return ContactModel(
         id: 'contact_${index.toString().padLeft(3, '0')}',
         name: name,
         avatar: '',
-        accountNumber: '${1000000000 + _random.nextInt(9000000000)}',
+        accountNumber: '${1000000000 + _random.nextInt(900000000)}',
         isFavorite: index < 4,
-        lastTransaction: index < 8 
+        lastTransaction: index < 8
             ? DateTime.now().subtract(Duration(days: _random.nextInt(30)))
             : null,
       );
@@ -255,7 +274,7 @@ class MockDataService {
     return budgetCategories.asMap().entries.map((entry) {
       final index = entry.key;
       final data = entry.value;
-      
+
       return BudgetModel(
         id: 'budget_${index.toString().padLeft(3, '0')}',
         userId: 'user_001',
